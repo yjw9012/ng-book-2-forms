@@ -2,14 +2,14 @@
  * Created by yjw9012 on 7/21/16.
  */
 import { Component } from "@angular/core";
-import { REACTIVE_FORM_DIRECTIVES, FORM_DIRECTIVES, FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from "@angular/forms";
+import { REACTIVE_FORM_DIRECTIVES, FORM_DIRECTIVES, FormGroup, FormBuilder, Validators, AbstractControl } from "@angular/forms";
 
 @Component({
-    selector: "demo-form-with-custom-validations",
+    selector: "demo-form-with-events",
     directives: [REACTIVE_FORM_DIRECTIVES, FORM_DIRECTIVES],
     template: `
         <div class="ui raised segment">
-            <h2 class="ui header">Demo Form: with custom validations</h2>
+            <h2 class="ui header">Demo Form: with Events</h2>
             <form [formGroup]="myForm"
                   (ngSubmit)="onSubmit(myForm.value)"
                   class="ui form">
@@ -26,9 +26,6 @@ import { REACTIVE_FORM_DIRECTIVES, FORM_DIRECTIVES, FormGroup, FormControl, Form
                     <div *ngIf="sku.hasError('required')" class="ui error message">
                         SKU is required
                     </div>
-                    <div *ngIf="sku.hasError('invalidSku')" class="ui error message">
-                        SKU must begin with 123
-                    </div>
                 </div>
 
                 <div *ngIf="!myForm.valid" class="ui error message">
@@ -41,22 +38,28 @@ import { REACTIVE_FORM_DIRECTIVES, FORM_DIRECTIVES, FormGroup, FormControl, Form
     `
 })
 
-export class DemoFormWithCustomValidations {
+export class DemoFormWithEvents {
     myForm: FormGroup;
     sku: AbstractControl;
 
-    static skuValidator(control : FormControl) : {[s : string] : boolean} {
-        if (!control.value.match(/^123/)) {
-            return {invalidSku : true};
-        }
-    }
-
     constructor(fb: FormBuilder) {
         this.myForm = fb.group({
-            "sku" : ["", Validators.compose([Validators.required, DemoFormWithCustomValidations.skuValidator])]
+            "sku" : ["", Validators.required]
         });
 
         this.sku = this.myForm.controls["sku"];
+
+        this.sku.valueChanges.subscribe(
+            (value: string) => {
+                console.log("sku changed to ", value);
+            }
+        );
+
+        this.myForm.valueChanges.subscribe(
+            (form: any) => {
+                console.log("form changed to ", form);
+            }
+        );
     }
 
     onSubmit(value: string): void {

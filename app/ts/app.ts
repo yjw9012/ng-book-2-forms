@@ -23,6 +23,7 @@ import {DemoFormSkuBuilder} from './forms/demo_form_sku_with_builder';
 import {DemoFormWithValidationsExplicit} from './forms/demo_form_with_validations_explicit';
 import {DemoFormWithValidationsShorthand} from './forms/demo_form_with_validations_shorthand';
 import {DemoFormWithCustomValidations} from './forms/demo_form_with_custom_validations';
+import {DemoFormWithEvents} from './forms/demo_form_with_events';
 
 /*
  * Webpack
@@ -34,7 +35,8 @@ import {DemoFormWithCustomValidations} from './forms/demo_form_with_custom_valid
         DemoFormSkuBuilder,
         DemoFormWithValidationsExplicit,
         DemoFormWithValidationsShorthand,
-        DemoFormWithCustomValidations
+        DemoFormWithCustomValidations,
+        DemoFormWithEvents
     ],
     template: `
         <div>
@@ -43,6 +45,7 @@ import {DemoFormWithCustomValidations} from './forms/demo_form_with_custom_valid
             <demo-form-with-validations-explicit></demo-form-with-validations-explicit>
             <demo-form-with-validations-shorthand></demo-form-with-validations-shorthand>
             <demo-form-with-custom-validations></demo-form-with-custom-validations>
+            <demo-form-with-events></demo-form-with-events>
         </div>
     `
 })
