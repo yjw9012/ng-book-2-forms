@@ -24,6 +24,7 @@ import {DemoFormWithValidationsExplicit} from './forms/demo_form_with_validation
 import {DemoFormWithValidationsShorthand} from './forms/demo_form_with_validations_shorthand';
 import {DemoFormWithCustomValidations} from './forms/demo_form_with_custom_validations';
 import {DemoFormWithEvents} from './forms/demo_form_with_events';
+import {DemoFormNgModel} from './forms/demo_form_ng_model';
 
 /*
  * Webpack
@@ -36,7 +37,8 @@ import {DemoFormWithEvents} from './forms/demo_form_with_events';
         DemoFormWithValidationsExplicit,
         DemoFormWithValidationsShorthand,
         DemoFormWithCustomValidations,
-        DemoFormWithEvents
+        DemoFormWithEvents,
+        DemoFormNgModel
     ],
     template: `
         <div>
@@ -46,6 +48,7 @@ import {DemoFormWithEvents} from './forms/demo_form_with_events';
             <demo-form-with-validations-shorthand></demo-form-with-validations-shorthand>
             <demo-form-with-custom-validations></demo-form-with-custom-validations>
             <demo-form-with-events></demo-form-with-events>
+            <demo-form-ng-model></demo-form-ng-model>
         </div>
     `
 })
