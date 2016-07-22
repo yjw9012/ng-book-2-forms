@@ -22,19 +22,27 @@ import {DemoFormSku} from './forms/demo_form_sku';
 import {DemoFormSkuBuilder} from './forms/demo_form_sku_with_builder';
 import {DemoFormWithValidationsExplicit} from './forms/demo_form_with_validations_explicit';
 import {DemoFormWithValidationsShorthand} from './forms/demo_form_with_validations_shorthand';
+import {DemoFormWithCustomValidations} from './forms/demo_form_with_custom_validations';
 
 /*
  * Webpack
  */
 @Component({
     selector: 'forms-demo-app',
-    directives: [DemoFormSku, DemoFormSkuBuilder, DemoFormWithValidationsExplicit, DemoFormWithValidationsShorthand],
+    directives: [
+        DemoFormSku,
+        DemoFormSkuBuilder,
+        DemoFormWithValidationsExplicit,
+        DemoFormWithValidationsShorthand,
+        DemoFormWithCustomValidations
+    ],
     template: `
         <div>
             <demo-form-sku></demo-form-sku>
             <demo-form-sku-builder></demo-form-sku-builder>
             <demo-form-with-validations-explicit></demo-form-with-validations-explicit>
             <demo-form-with-validations-shorthand></demo-form-with-validations-shorthand>
+            <demo-form-with-custom-validations></demo-form-with-custom-validations>
         </div>
     `
 })
